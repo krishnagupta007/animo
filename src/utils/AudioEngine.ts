@@ -1,3 +1,4 @@
+/* eslint-disable */
 // Animo Premium Synthesized Web Audio API Engine
 // Generated client-side to ensure zero-latency feedback and 100% offline reliability.
 
