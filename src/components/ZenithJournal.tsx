@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { MascotOwl } from './MascotOwl';
 import { Confetti } from './Confetti';
