@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { AccordionItem } from './AccordionItem';
 import { FlashcardViewer } from './FlashcardViewer';
 import type { Flashcard } from './FlashcardViewer';
@@ -45,7 +45,7 @@ interface AcademicsTabProps {
   handleGeneratePdfFlashcards: () => void;
 }
 
-export const AcademicsTab: React.FC<AcademicsTabProps> = ({
+export const AcademicsTab: React.FC<AcademicsTabProps> = memo(({
   targetExam,
   handleSetTargetExam,
   setMascotMsg,
@@ -771,4 +771,6 @@ export const AcademicsTab: React.FC<AcademicsTabProps> = ({
       </div>
     </div>
   );
-};
+});
+
+AcademicsTab.displayName = 'AcademicsTab';

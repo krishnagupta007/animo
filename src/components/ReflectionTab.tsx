@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { BreathingGuide } from './BreathingGuide';
 
 interface ReflectionTabProps {
@@ -18,7 +18,7 @@ interface ReflectionTabProps {
   handleBreathingResetComplete: () => void;
 }
 
-export const ReflectionTab: React.FC<ReflectionTabProps> = ({
+export const ReflectionTab: React.FC<ReflectionTabProps> = memo(({
   handleJournalSubmit,
   voiceActive,
   toggleVoiceMode,
@@ -178,4 +178,6 @@ export const ReflectionTab: React.FC<ReflectionTabProps> = ({
       </div>
     </div>
   );
-};
+});
+
+ReflectionTab.displayName = 'ReflectionTab';

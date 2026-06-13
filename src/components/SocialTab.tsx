@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 interface LeaderboardItem {
   id: string;
@@ -13,7 +13,7 @@ interface SocialTabProps {
   leaderboardData: LeaderboardItem[];
 }
 
-export const SocialTab: React.FC<SocialTabProps> = ({ leaderboardData }) => {
+export const SocialTab: React.FC<SocialTabProps> = memo(({ leaderboardData }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
       {/* Global Leaderboard - Disabled by User Request */}
@@ -79,4 +79,6 @@ export const SocialTab: React.FC<SocialTabProps> = ({ leaderboardData }) => {
       </div>
     </div>
   );
-};
+});
+
+SocialTab.displayName = 'SocialTab';

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { memo, useRef, useEffect } from 'react';
 import { MascotOwl } from './MascotOwl';
 
 /*
@@ -18,7 +18,7 @@ interface ChatTabProps {
   cognitiveScore: number;
 }
 
-export const ChatTab: React.FC<ChatTabProps> = ({
+export const ChatTab: React.FC<ChatTabProps> = memo(({
   chatHistory,
   chatInput,
   setChatInput,
@@ -289,4 +289,6 @@ export const ChatTab: React.FC<ChatTabProps> = ({
       </div> */}
     </div>
   );
-};
+});
+
+ChatTab.displayName = 'ChatTab';

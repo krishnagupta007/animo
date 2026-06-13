@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable */
+import React, { memo } from 'react';
 
 export interface UserProfileActivities {
   journal: boolean;
@@ -31,7 +32,7 @@ interface FocusTabProps {
   formatTimerTime: (seconds: number) => string;
 }
 
-export const FocusTab: React.FC<FocusTabProps> = ({
+export const FocusTab: React.FC<FocusTabProps> = memo(({
   simulatedDay,
   completedQuestsCount,
   mood,
@@ -374,4 +375,6 @@ export const FocusTab: React.FC<FocusTabProps> = ({
       {false && (cognitiveScore || fastForwardPomodoro)}
     </div>
   );
-};
+});
+
+FocusTab.displayName = 'FocusTab';

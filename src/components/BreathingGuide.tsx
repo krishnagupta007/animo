@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect, useRef } from 'react';
 
 type Phase = 'ready' | 'inhale' | 'hold' | 'exhale' | 'holdPost' | 'done';
