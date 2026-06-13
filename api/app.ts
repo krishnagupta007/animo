@@ -2,33 +2,39 @@ import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import helmet from '@fastify/helmet';
 import rateLimit from '@fastify/rate-limit';
+import compress from '@fastify/compress';
 import { journalRoutes } from './routes/journal.js';
 
 const app = Fastify({
   logger: true,
 });
 
-// Register Helmet for secure HTTP headers
+// Register Compression for performance
+await app.register(compress);
+
+// Register Helmet for enterprise-grade security headers
 await app.register(helmet, {
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      fontSrc: ["'self'", "https://fonts.gstatic.com"],
       imgSrc: ["'self'", "data:", "blob:"],
       scriptSrc: ["'self'", "'unsafe-inline'"],
+      connectSrc: ["'self'", "https://openrouter.ai"],
     },
   },
 });
 
-// Register CORS for client-server integration
+// Register CORS with safe defaults
 await app.register(cors, {
   origin: true,
   credentials: true,
 });
 
-// Register Rate Limiting to prevent API abuse
+// Register Rate Limiting to prevent API abuse (Enterprise Requirement)
 await app.register(rateLimit, {
-  max: 30,
+  max: 60,
   timeWindow: '1 minute',
   errorResponseBuilder: (request, context) => ({
     statusCode: 429,
