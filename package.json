@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"vite\" \"tsx watch api/local.ts\"",
-    "build": "tsc -b && vite build",
+    "dev": "node api.js && concurrently \"vite\" \"tsx watch api/local.ts\"",
+    "build": "node api.js && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
